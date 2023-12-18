@@ -10,20 +10,32 @@ import java.util.Set;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
+
+@Entity
+@Table(name = "article")
 public class Article {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String doi;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "publication_date")
     private Integer publication_date;
 
+    @Column(name = "url")
     private String url;
 
+    @Column(name = "num_citations")
     private Integer num_citations;
 
+    @ManyToOne
+    @JoinColumn(name = "journal_id")
     private Journal journal;
 
+    @ManyToMany(mappedBy = "articles")
     private Set<Author> authors;
 
     public Article() {

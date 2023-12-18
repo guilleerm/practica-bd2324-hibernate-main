@@ -10,18 +10,28 @@ import java.util.Set;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
+
+@Entity
+@Table(name = "journals")
 public class Journal {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long journal_id;
 
+    @Column(name = "journal_name")
     private String journal_name;
 
+    @Column(name = "issn")
     private String issn;
 
+    @Column(name = "jif")
     private Double jif;
 
+    @Column(name = "jif_quartile")
     private String jif_quartile;
 
+    @OneToMany(mappedBy = "journal")
     private Set<Article> articles;
 
     public Journal() {

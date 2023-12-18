@@ -10,16 +10,25 @@ import java.util.Set;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
+
+@Entity
+@Table(name = "author")
 public class Author {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long author_id;
 
+    @Column(name = "author_name")
     private String author_name;
 
+    @Column(name = "importance")
     private Double importance;
 
+    @ManyToMany
     private Set<Article> articles;
 
+    @ManyToMany
     private Set<Affiliation> affiliations;
 
     public Author() {
@@ -45,11 +54,11 @@ public class Author {
         return importance;
     }
 
-    public Set<Affiliation> getAffiliations () {
+    public Set<Affiliation> getAffiliations() {
         return this.affiliations;
     }
 
-    public Set<Article> getArticles () {
+    public Set<Article> getArticles() {
         return this.articles;
     }
 }
