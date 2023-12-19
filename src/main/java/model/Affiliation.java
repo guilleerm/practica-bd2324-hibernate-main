@@ -12,11 +12,12 @@ import java.util.Set;
 // necesarias.
 
 @Entity
-@Table(name = "affiliations")
+@Table(name = "affiliation")
 public class Affiliation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "affiliation_id")
     private Long affiliation_id;
 
     @Column(name = "affiliation_name")
@@ -28,7 +29,8 @@ public class Affiliation {
     @Column(name = "country_name")
     private String country_name;
 
-    @ManyToMany(mappedBy = "affiliations")
+    @ManyToMany()
+    @JoinTable(name = "author_affiliation")
     private Set<Author> authors;
 
     public Affiliation() {

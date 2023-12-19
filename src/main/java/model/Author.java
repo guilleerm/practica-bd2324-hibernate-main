@@ -16,7 +16,8 @@ import java.util.Set;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "author_id")
     private Long author_id;
 
     @Column(name = "author_name")
@@ -25,10 +26,10 @@ public class Author {
     @Column(name = "importance")
     private Double importance;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private Set<Article> articles;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private Set<Affiliation> affiliations;
 
     public Author() {

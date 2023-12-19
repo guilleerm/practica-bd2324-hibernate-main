@@ -12,11 +12,12 @@ import java.util.Set;
 // necesarias.
 
 @Entity
-@Table(name = "journals")
+@Table(name = "journal")
 public class Journal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "journal_id")
     private Long journal_id;
 
     @Column(name = "journal_name")

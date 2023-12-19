@@ -16,7 +16,8 @@ import java.util.Set;
 public class Article {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "doi")
     private String doi;
 
     @Column(name = "title")
@@ -31,11 +32,12 @@ public class Article {
     @Column(name = "num_citations")
     private Integer num_citations;
 
-    @ManyToOne
-    @JoinColumn(name = "journal_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "journal")
     private Journal journal;
 
-    @ManyToMany(mappedBy = "articles")
+    @ManyToMany()
+    @JoinTable(name = "article_author")
     private Set<Author> authors;
 
     public Article() {
