@@ -63,9 +63,6 @@ public class Main {
         session.close();
         parser.close();
 
-
-        session.close();
-
         System.out.println("Operación realizada con exito");
     }
 }
