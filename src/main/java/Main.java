@@ -1,5 +1,5 @@
 import model.Affiliation;
-import model.Author;
+import model.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -56,6 +56,8 @@ public class Main {
 
             Author author = new Author(name, importance);
             session.save(author);
+
+            upm.getAuthors().add(author);
 
         }
 
